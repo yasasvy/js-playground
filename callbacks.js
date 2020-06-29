@@ -22,3 +22,16 @@ add(1, 4, (sum) => {
     console.log(sum) // Should print: 5
 })
 
+const doWorkCallback = (callback) => {
+    setTimeout(() => {
+        callback(undefined, [1,3,5])
+        callback("Oops something has gone wrong!",undefined)
+    }, 2000)
+}
+
+doWorkCallback((error, result) => {
+    if(error) {
+        return console.log(error)
+    }
+    console.log(result)
+})
